@@ -1,7 +1,21 @@
 .App {
   text-align: center;
 }
-
+.special-blue{
+  background-color: #4949d8 !important;
+  width: 27px;
+  border-radius: 30%; 
+}
+.special-red{
+  background-color: #FF0000 !important;
+  width: 27px;
+  border-radius: 30%; 
+}
+.special-green{
+   background-color: #4cbf4a !important;
+   width: 27px;
+   border-radius: 30%; 
+  }
 .App-logo {
   height: 40vmin;
   pointer-events: none;
