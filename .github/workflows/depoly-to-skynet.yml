@@ -1,0 +1,61 @@
+name: Deploy to Skynet
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      REACT_APP_LIVEPEER_API_KEY: ${{secrets.REACT_APP_LIVEPEER_API_KEY}}
+      REACT_APP_MORALIS_APP_ID: ${{secrets.REACT_APP_MORALIS_APP_ID}}
+      REACT_APP_MORALIS_SERVER_URL: ${{secrets.REACT_APP_MORALIS_SERVER_URL}}
+      REACT_APP_NFT_STORAGE_API_KEY: ${{secrets.REACT_APP_NFT_STORAGE_API_KEY}}
+      REACT_APP_BICONOMY_API_KEY:  ${{secrets.REACT_APP_BICONOMY_API_KEY}}
+      NODE_OPTIONS: '--max_old_space_size=4096'
+      CI: false
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14.17
+
+      - run: npm ci
+      - run: npm install
+      - run:  npm install moralis
+      - run: npm install react-moralis
+      - run: npm install react-router-dom
+      - run: npm install @headlessui/react
+      - run: npm install @heroicons/react
+      - run: npm install @livepeer/webrtmp-sdk
+      - run: npm install ethereumjs-util
+      - run: npm install @biconomy/mexa
+      - run: npm install web3
+      - run: npm install ethereumjs-abi
+      - run: npm install axios
+      - run: npm install m3u8-parser
+      - run: npm install videojs-markers-plugin
+      - run: npm install nft.storage
+      - run: npm install ethereumjs-util
+      - run: npm install date-fns
+      - run: npm install @superfluid-finance/js-sdk
+      - run: npm install @tailwindcss/aspect-ratio
+      - run: npm install @tailwindcss/forms
+      - run: npm install @truffle/contract
+      - run: npm install react-hook-form
+      - run: npm install react-number-format
+      - run: npm install react-scripts
+      - run: npm install @craco/craco
+      - run: npm install video.js
+      - run: npm install autoprefixer@9.8.6
+      - run: npm install postcss@7.0.36
+      - run: npm install @tailwindcss/postcss7-compat@^2.2.14
+      - run: npm run build
+
+      - name: "Deploy to Skynet"
+        uses: SkynetLabs/deploy-to-skynet-action@v2
+        with:
+          upload-dir: build
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          registry-seed: ${{ secrets.SKYNET_REGISTRY_SEED || '' }}
