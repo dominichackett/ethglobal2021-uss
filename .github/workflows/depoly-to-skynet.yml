@@ -21,6 +21,7 @@ jobs:
 
       - run: npm ci
       - run: npm install
+      - run:  npm install moralis
       - run: npm install react-moralis
       - run: npm install react-router-dom
       - run: npm run build
