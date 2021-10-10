@@ -5,8 +5,6 @@
   "dependencies": {
     "@biconomy/mexa": "^2.0.20",
     "@craco/craco": "^6.3.0",
-    "@ffmpeg/core": "^0.10.0",
-    "@ffmpeg/ffmpeg": "^0.10.1",
     "@headlessui/react": "^1.4.1",
     "@heroicons/react": "^1.0.4",
     "@livepeer/webrtmp-sdk": "^0.2.3",
