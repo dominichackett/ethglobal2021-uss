@@ -25,7 +25,7 @@ jobs:
       - run: npm install react-moralis
       - run: npm install react-router-dom
       - run: npm install @headlessui/react
-      - run: npm install @heroicons/react/outline
+      - run: npm install @heroicons/react
       - run: npm intall @livepeer/webrtmp-sdk
       - run: npm install ethereumjs-util
       - run: npm install @biconomy/mexa
