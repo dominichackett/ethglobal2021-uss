@@ -14,6 +14,7 @@ jobs:
       REACT_APP_NFT_STORAGE_API_KEY: ${{secrets.REACT_APP_NFT_STORAGE_API_KEY}}
       REACT_APP_BICONOMY_API_KEY:  ${{secrets.REACT_APP_BICONOMY_API_KEY}}
       NODE_OPTIONS: '--max_old_space_size=4096'
+      CI: false
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
