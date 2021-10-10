@@ -32,7 +32,7 @@ jobs:
       - run: npm install web3
       - run: npm install ethereumjs-abi
       - run: npm install axios
-      - run: npm intstall m3u8-parser
+      - run: npm install m3u8-parser
       - run: npm install videojs-markers-plugin
       - run: npm install nft.storage
       - run: npm install ethereumjs-util
