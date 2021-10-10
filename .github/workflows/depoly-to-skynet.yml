@@ -22,6 +22,7 @@ jobs:
       - run: npm ci
       - run: npm install
       - run: npm install react-moralis
+      - run: npm install react-router-dom.
       - run: npm run build
 
       - name: "Deploy to Skynet"
