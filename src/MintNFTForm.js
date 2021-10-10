@@ -135,7 +135,6 @@ export default function MintNFTForm() {
   const [openErrorDialog,setOpenErrorDialog]   = useState(false);
   const [errorDialogMessage,setErrorDialogMessage] = useState("");
   const [errorDialogTitle,setErrorDialogTitle]  = useState("");
-  const videoRef = useRef(null);
   const [videoFile,setVideoFile] = useState();
   const [recordingURL,setRecordingURL] = useState(null);
   const {id} = useParams();
@@ -516,10 +515,7 @@ const handlePreview = () => {
   }
 
   
-  const   pready = (player)=>
-   {
-    videoRef.current = player;
-   }
+  
  
   async function newClip()
   {
@@ -560,10 +556,6 @@ const handlePreview = () => {
     })
 
     createNFT(metadata.url);
-    console.log(metadata.url);
- let url =window.URL.createObjectURL(new File([playlist],"source.m3u8", { type: 'application/x-mpegURL' }));
-   videoRef.current.src({type: 'application/x-mpegURL',src:url});
-  videoRef.current.play()
 }
 
 
@@ -662,7 +654,6 @@ const constructMetaTransactionMessage = (nonce, chainId, functionSignature, cont
     <MyNotification type={notificationType} header={notificationHeader} body={notificationBody} open={openNotification} handleClose={handleCloseNotification}/>
 
     </div>
-    <VideoJS controls onReady={pready} className="video-js  vjs-default-skin shadow-lg bg-black  focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-my-green "/>
 
 
   </div>) 

@@ -25,13 +25,9 @@ export default function MyNFTFeed() {
        const resp = await Moralis.Cloud.run('getEventsForUserNFTs',{userAddress:user.get("ethAddress")});
        let events = new Map();
         resp.forEach(function(data){
-          events[data.tokenid] = {eventID:data.eventID,name:data.name};
-          console.log(data)  
+          events[data.tokenid] = {eventID:data.eventID,name:data.name,eventpic:data.eventpic};
         });
         
-        console.log(events)
-       console.log(JSON.stringify(polygonNFTs))
-       console.log(polygonNFTs)
        let tokens = [];
        polygonNFTs.result.forEach(function(_nft){
         
@@ -40,13 +36,29 @@ export default function MyNFTFeed() {
          {
               let  url ="";
               let metadata = JSON.parse(_nft.metadata);  
-              console.log(metadata)
+              
+              
+             
+
              if(metadata.image)
              {
                url = metadata.image.replace("ipfs://","");
               url = "https://ipfs.moralis.io:2053/ipfs/"+url;
              }
-              //Check if we have a video file or an image
+              
+
+             //Setup options for video nft
+              let options =  {autoplay: false,
+              controls: true,
+              responsive: true,
+              fluid: true,
+              sources: [{
+                src: url,
+                type: 'application/x-mpegURL'
+              }]};
+
+             
+             //Check if we have a video file or an image
               let type = (url.substr(url.length - 4).toLowerCase() == "m3u8" ? 1: 2);
 
               tokens.push({token_id:_nft.token_id
@@ -54,7 +66,7 @@ export default function MyNFTFeed() {
                            url:url,
                            type:type,
                            token_name:_nft.name,
-                           symbol:_nft.symbol,event:events[_nft.token_id]});
+                           symbol:_nft.symbol,event:events[_nft.token_id],options:options});
                            
          }
          
@@ -82,14 +94,14 @@ export default function MyNFTFeed() {
           <div className="flex-1 flex flex-col p-8">
           {
             nft.type == 1 ?
-            <VideoJS         options={videoJsOptions} >
+            <VideoJS         options={nft.options} >
           
   Your browser does not support the video tag.
   <source src={nft.url} type="application/x-mpegURL" />
 
 </VideoJS> : <img src={nft.url}    /> }       
             <dl className="mt-1 flex-grow flex flex-col justify-end">
-            <dt className="sr-only">Event</dt>
+            <dt className="sr-only">Event </dt>
               <dd>     <h3 className="mt-6 text-gray-900 text-sm font-medium">{nft.token_name}</h3>
 </dd>
               <dt className="sr-only">Name</dt>

@@ -5,7 +5,7 @@ import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import VideoImage from "./images/videographer.svg";
 import CameraLogo from "./images/camera.png";
 import { Link } from 'react-router-dom';
-import { useMoralis } from "react-moralis";
+import { ByMoralis,useMoralis } from "react-moralis";
 import { useHistory} from "react-router-dom";
 import MyNotification from './MyNotification';
 
@@ -15,7 +15,7 @@ const navigation = [
   ]
 
 export default function LandingPage() {
-  const { authenticate, isAuthenticated ,Moralis} = useMoralis();
+  const {authenticate, isAuthenticated ,Moralis} = useMoralis();
   const history = useHistory();
   const [openNotification,setOpenNotification]  = useState(false);
   const [notificationHeader,setNotificationHeader]  = useState("");
@@ -146,7 +146,7 @@ export default function LandingPage() {
 
               </p>
               <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-                <div className="rounded-md shadow">
+                <div className="rounded-md ">
                   <button
                     onClick={handleConnect}
                     className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-my-green hover:bg-my-green-light md:py-4 md:text-lg md:px-10"
@@ -154,8 +154,13 @@ export default function LandingPage() {
                     Connect Wallet
                   </button>
                 </div>
-            
-              </div>
+                <div className="ml-24">
+                  <a href="https://www.moralis.io" target="_blank">
+                <ByMoralis width={230} variant="light"/>
+                </a>
+                </div>
+               
+          </div>
             </div>
           </main>
         </div>
