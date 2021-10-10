@@ -48,6 +48,9 @@ jobs:
       - run: npm install react-scripts
       - run: npm install @craco/craco
       - run: npm install video.js
+      - run: npm install autoprefixer
+      - run: npm install postcss
+      - run: npm install tailwindcss
       - run: npm run build
 
       - name: "Deploy to Skynet"
