@@ -1,0 +1,32 @@
+name: Deploy to Skynet
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      REACT_APP_LIVEPEER_API_KEY: ${{secrets.REACT_APP_LIVEPEER_API_KEY}}
+      REACT_APP_MORALIS_APP_ID: ${{secrets.REACT_APP_MORALIS_APP_ID}}
+      REACT_APP_MORALIS_SERVER_URL: ${{secets.REACT_APP_MORALIS_SERVER_URL}}
+      REACT_APP_NFT_STORAGE_API_KEY: ${{secrets.REACT_APP_NFT_STORAGE_API_KEY}}
+      REACT_APP_BICONOMY_API_KEY:  ${{secrets.REACT_APP_BICONOMY_API_KEY}}
+      NODE_OPTIONS: '--max_old_space_size=4096'
+      CI: false
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14.17
+
+      - run: npm ci
+      - run: npm run build
+
+      - name: "Deploy to Skynet"
+        uses: SkynetLabs/deploy-to-skynet-action@v2
+        with:
+          upload-dir: build
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          registry-seed: ${{ secrets.SKYNET_REGISTRY_SEED || '' }}
