@@ -25,6 +25,27 @@ jobs:
       - run: npm install react-moralis
       - run: npm install react-router-dom
       - run: npm install @headlessui/react
+      - run: npm install @heroicons/react/outline
+      - run: npm intall @livepeer/webrtmp-sdk
+      - run: npm install ethereumjs-util
+      - run: npm install @biconomy/mexa
+      - run: npm install web3
+      - run: npm install ethereumjs-abi
+      - run: npm install axios
+      - run: npm intstall m3u8-parser
+      - run: npm install videojs-markers-plugin
+      - run: npm install nft.storage
+      - run: npm install ethereumjs-util
+      - run: npm install date-fns
+      - run: npm install @superfluid-finance/js-sdk
+      - run: npm install @tailwindcss/aspect-ratio
+      - run: npm install @tailwindcss/forms
+      - run: npm install @truffle/contract
+      - run: npm install react-hook-form
+      - run: npm install react-number-format
+      - run: npm install react-scripts
+      - run: npm install @craco/craco
+      - run: npm install video.js
       - run: npm run build
 
       - name: "Deploy to Skynet"
