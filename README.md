@@ -1,4 +1,4 @@
-[![Add to Homescreen](https://img.shields.io/badge/Skynet-Add%20To%20Homescreen-00c65e?logo=skynet&labelColor=0d0d0d)](https://homescreen.hns.siasky.net/#/skylink/AQDnqxkw9uq5qVRckdtkve-ED8vJqhwZJf38CQ3YYOqF9Agit)
+[![Add to Homescreen](https://img.shields.io/badge/Skynet-Add%20To%20Homescreen-00c65e?logo=skynet&labelColor=0d0d0d)](https://homescreen.hns.siasky.net/#/skylink/AQDnqxkw9uq5qVRckdtkve-ED8vJqhwZJf38CQ3YYOqF9A)
 
 # Getting Started with Create React App
 
@@ -40,7 +40,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
  REACT_APP_BICONOMY_API_KEY
 
  You will need API Keys from:
- 
+
  www.livepeer.com
 
  www.moralis.io
